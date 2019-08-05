@@ -35,9 +35,9 @@ try:
     response = client.get_parameter(Name='BACKEND_API')
     BACKEND_API = response['Parameter']['Value'].rstrip('/')
 except:
-    print "SSM unavailable - do you have an IAM role"
+    print("SSM unavailable - do you have an IAM role")
     BACKEND_API = 'http://catsndogs.lol'
-print "Backend set to: {}".format(BACKEND_API)
+print("Backend set to: {}".format(BACKEND_API))
 
 #Make sure we can find unicorn files
 CODE_DIR = os.getenv('CODE_DIR')
@@ -107,6 +107,6 @@ if __name__ == '__main__':
         app.logger.addHandler(handler)
         logging.getLogger("werkzeug").addHandler(handler)
     except:
-        print "Couldn't start CW Logging"
+        print("Couldn't start CW Logging")
 
     app.run(host='0.0.0.0')
